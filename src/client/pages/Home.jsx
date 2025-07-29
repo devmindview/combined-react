@@ -138,8 +138,8 @@ const Home = () => {
                 </button>
                 <a href="#hero-about">
                   <button className="px-6 py-3 bg-white text-teal-700 rounded-xl hover:bg-slate-200 transition w-full sm:w-auto">
-                  Learn More
-                </button>
+                    Learn More
+                  </button>
                 </a>
               </div>
             </FadeInFromBottom>
@@ -213,9 +213,9 @@ const Home = () => {
           <div className="flex gap-4 mb-4">
             <FadeInFromBottom>
               <FontAwesomeIcon
-              icon={faCircleCheck}
-              className="text-green-500 text-xl w-6 md:w-8 h-auto"
-            />
+                icon={faCircleCheck}
+                className="text-green-500 text-xl w-6 md:w-8 h-auto"
+              />
             </FadeInFromBottom>
             <div>
               <FadeInFromBottom>
@@ -235,9 +235,9 @@ const Home = () => {
           <div className="flex  gap-4">
             <FadeInFromBottom>
               <FontAwesomeIcon
-              icon={faCircleCheck}
-              className="text-green-500 text-xl w-6 md:w-8 h-auto"
-            />
+                icon={faCircleCheck}
+                className="text-green-500 text-xl w-6 md:w-8 h-auto"
+              />
             </FadeInFromBottom>
             <div>
               <FadeInFromBottom>
@@ -300,7 +300,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="w-full max-w-7xl mx-auto px-6 my-16">
+      <section className="w-full max-w-7xl mx-auto px-6 my-16 mt-40 md:mt-20">
         <FadeInFromBottom>
           <h2 className="text-2xl md:text-3xl pb-10 text-center">
             Our Best Seller
@@ -323,7 +323,7 @@ const Home = () => {
       <section className="w-full max-w-7xl mx-auto px-4 my-20">
         <div className="flex flex-col md:flex-row gap-4">
           <div
-            className="md:w-1/2 w-full h-[36rem] bg-zinc-500 rounded-tl-3xl rounded-b-3xl rounded-tr-[8rem] object-cover"
+            className="md:w-1/2 w-full h-[34rem] bg-zinc-500 rounded-tl-3xl rounded-b-3xl rounded-tr-[8rem] object-cover"
             style={{
               backgroundImage: `
          

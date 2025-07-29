@@ -5,6 +5,8 @@ import ClientLayout from '../layout/ClientLayout';
 import Products from '../pages/Products';
 import View from '../components/products-ui/View';
 import Contact from '../pages/Contact';
+import PrivacyPolicy from '../policy/PrivacyPolicy';
+import TermsAndConditions from '../policy/TermsAndConditions';
 
 
 
@@ -19,6 +21,8 @@ function ClientRoute() {
         <Route path="/products" element={<Products />} />
         <Route path="/view" element={<View />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy/>} />
+        <Route path="/terms-and-conditions" element={<TermsAndConditions/>} />
       </Route>
     </Routes>
   );
