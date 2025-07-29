@@ -219,7 +219,7 @@ const Home = () => {
             </FadeInFromBottom>
             <div>
               <FadeInFromBottom>
-                <h2 className="text-xl md:text-2xl my-1">
+                <h2 className="text-xl md:text-xl my-1">
                   Ayurvedic Expertise
                 </h2>
                 <p className="text-slate-600">
@@ -241,7 +241,7 @@ const Home = () => {
             </FadeInFromBottom>
             <div>
               <FadeInFromBottom>
-                <h2 className="text-xl md:text-2xl my-1 ">
+                <h2 className="text-xl md:text-xl my-1 ">
                   Tranquil Atmosphere
                 </h2>
                 <p className="text-slate-600">
