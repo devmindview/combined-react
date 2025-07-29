@@ -2,26 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
+
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-body{
-  background-color: #fffaf3;
+body {
+  background-color: #fdfbf7;
+    /* background-color: #fafafa; */
+  font-family: "Poppins", sans-serif;
+}
+h1,
+h2 {
+  /* font-family: "Cardo", serif; */
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
 }
 
-
-@keyframes leafWave {
-  0%   { transform: rotate(0deg); }
-  20%  { transform: rotate(7deg); }
-  40%  { transform: rotate(-7deg); }
-  60%  { transform: rotate(5deg); }
-  80%  { transform: rotate(-5deg); }
-  100% { transform: rotate(0deg); }
-}
-
-.leaf-wave {
-  animation: leafWave 7s ease-in-out infinite;
-  transform-origin: bottom center;
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.2s ease-in-out;
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }

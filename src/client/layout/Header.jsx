@@ -1,35 +1,85 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.png'
+import { getAllCategories } from "../services/userServices";
+import { useRef } from "react";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [showCategories, setShowCategories] = useState(false);
+  const [categories, setCategories] = useState([])
+
+  const dropdownRef = useRef(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setShowCategories(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  useEffect(() => {
+    getAllCategories().then(setCategories).catch(console.error);
+  }, []);
 
   return (
-    <header className="w-full bg-[#fffaf3]  tracking-wide z-50">
-      <div className="flex items-center justify-between px-6 py-4 md:py-6 lg:px-10">
+    <header className="w-full bg-[#fdfbf7]  tracking-wide z-50">
+      <div className="flex items-center justify-between px-6 py-4 md:py-6 md:px-20">
         {/* Logo */}
-        <a href="#" className="flex items-center">
+        <Link to={'/'} className="flex items-center">
           <img
             src={logo} // Replace with your logo
             alt="combined"
             className="w-16 md:w-20 mr-2"
           />
 
-        </a>
+        </Link>
 
         {/* Desktop Menu */}
-        <nav className="hidden lg:flex items-center space-x-8 text-sm font-semibold text-green-900">
-          <Link to="/" className="hover:text-green-700">HOME</Link>
-          <Link to="/about" className="hover:text-green-700">ABOUT</Link>
-          <Link to="/products" className="hover:text-green-700">PRODUCTS</Link>
-          <Link to="#" className="hover:text-green-700">FOR DEALERS</Link>
+        <nav className="hidden lg:flex items-center space-x-8 text-sm font-normal text-green-950 relative">
+          <Link to="/" className="hover:text-green-700">Home</Link>
+          <Link to="/about" className="hover:text-green-700">About</Link>
+          <Link to="/products" className="hover:text-green-700">Products</Link>
+
+          <div className="relative" ref={dropdownRef}>
+            <button
+              onClick={() => setShowCategories(!showCategories)}
+              className={`hover:text-green-700 focus:outline-none transition duration-200 ${showCategories ? "text-green-700 font-semibold" : ""
+                }`}
+            >
+              Our Categories
+            </button>
+
+            {showCategories && (
+              <div className="absolute left-0 top-full mt-2 w-[300px] bg-white rounded-xl shadow-xl border border-gray-200 p-4 grid grid-cols-2 gap-3 text-sm z-50 animate-fade-in">
+                {categories.map((cat) => (
+                  <Link
+                    key={cat.id}
+                    to={`/products?category=${encodeURIComponent(cat.name)}`}
+                    className="text-green-900 hover:text-green-600"
+                    onClick={() => setShowCategories(false)}
+                  >
+                    {cat.name}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+
         </nav>
+
 
         {/* Contact Button (desktop only) */}
         <div className="hidden lg:block">
 
-          <Link to={'/contact'} className="bg-green-800 text-white px-6 py-3 rounded-full font-semibold text-sm hover:bg-green-700 transition">
+          <Link to={'/contact'} className="bg-[#1d4607] text-white px-6 py-3 rounded-full font-semibold text-sm hover:bg-green-700 transition">
             Contact Us
           </Link>
         </div>
@@ -49,7 +99,7 @@ const Header = () => {
         onClick={() => setMenuOpen(false)}
       >
         <div
-          className={`bg-[#fdf5e6] w-3/4 sm:w-2/4 max-w-xs h-full p-6 transform transition-transform duration-300 ${menuOpen ? "translate-x-0" : "-translate-x-full"
+          className={`bg-[#fdfbf7] w-3/4 sm:w-2/4 max-w-xs h-full p-6 transform transition-transform duration-300 ${menuOpen ? "translate-x-0" : "-translate-x-full"
             }`}
           onClick={(e) => e.stopPropagation()}
         >
@@ -70,21 +120,25 @@ const Header = () => {
           </button>
 
           {/* Menu Links */}
-          <nav className="space-y-5 text-green-900 font-semibold text-sm">
-            <a href="#" className="block hover:text-green-700">HOME</a>
+          <nav className="space-y-5 text-green-950 font-medium text-sm">
+            <Link to="/" className="block hover:text-green-700">Home</Link>
             <hr />
-            <a href="#" className="block hover:text-green-700">ABOUT</a>
+            <Link to="/about" className="block hover:text-green-700">About</Link>
             <hr />
-            <a href="#" className="block hover:text-green-700">TREATMENT</a>
+            <Link to="/products" className="block hover:text-green-700">Products</Link>
             <hr />
-            <a href="#" className="block hover:text-green-700">PAGES</a>
-            <hr />
-            <a
-              href="#"
-              className="inline-block bg-green-800 text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-green-700 transition mt-4"
-            >
-              Contact Us
-            </a>
+            <Link to="#" className="block hover:text-green-700">Categories</Link>
+            {categories.map(cat => (
+              <Link
+                key={cat.id}
+                to={`/products?category=${encodeURIComponent(cat.name)}`}
+                className="block text-xs text-gray-600 hover:text-green-700"
+                onClick={() => setMenuOpen(false)} 
+              >
+                {cat.name}
+              </Link>
+            ))}
+
           </nav>
         </div>
       </div>

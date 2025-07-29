@@ -1,6 +1,7 @@
 import React from "react";
 import hero from "../../assets/aesthetic-bg.webp";
 import heropic from "../../assets/heropic.jpg";
+import FadeInFromBottom from "../components/elements/FadeInFromBottom";
 
 
 const About = () => {
@@ -17,64 +18,80 @@ const About = () => {
           backgroundAttachment: "fixed",
         }}
       >
-        <h1 className="text-3xl sm:text-7xl text-white text-center font-serif">About Us</h1>
+        <FadeInFromBottom>
+          <h1 className="text-2xl sm:text-3xl text-white text-center">About Us</h1>
+        </FadeInFromBottom>
       </section>
 
       <section className="max-w-7xl  mx-auto py-16 px-4 md:px-1">
         {/* Header Row */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-12">
           <div className="md:w-3/4">
-            <p className="text-sm text-teal-700 tracking-widest uppercase">Our Value</p>
-            <h2 className="text-4xl md:text-5xl font-serif font-semibold text-gray-900 leading-snug mt-2">
-              Embrace Our Core Values <br /> for Holistic Wellness
-            </h2>
-            <p className="mt-4 text-gray-600 max-w-2xl">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
-            </p>
+            <FadeInFromBottom>
+              <p className="text-sm text-teal-700 tracking-widest uppercase">Our Value</p>
+
+            </FadeInFromBottom>
+            <FadeInFromBottom>
+              <h2 className="text-4xl md:text-5xl font-semibold text-gray-900 leading-snug mt-2">
+                Embrace Our Core Values <br /> for Holistic Wellness
+              </h2>
+              <p className="mt-4 text-gray-600 max-w-2xl">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+              </p>
+            </FadeInFromBottom>
           </div>
           <div className="md:w-1/4 flex md:justify-end">
-            <button className="text-white font-semibold bg-teal-600 hover:bg-teal-500 px-6 py-3 rounded-md transition">
+            <FadeInFromBottom>
+              <button className="text-white font-semibold bg-teal-600 hover:bg-teal-500 px-6 py-3 rounded-md transition">
               Contact us
             </button>
+            </FadeInFromBottom>
           </div>
         </div>
 
         {/* Main Content */}
         <div className="flex flex-col md:flex-row gap-10">
           {/* Left Image */}
-          <div className="w-full md:w-1/2">
+          <FadeInFromBottom className="w-full md:w-1/2">
             <img
               src={heropic}
               alt="Treatment"
               className="rounded-[2rem] rounded-br-none w-full h-[400px] md:h-[500px] object-cover"
             />
-          </div>
+          </FadeInFromBottom>
+
 
           {/* Right Cards */}
           <div className="w-full md:w-1/2 flex flex-col gap-6 ">
             {/* Vision Card */}
-            <div className="bg-white h-[33%] p-6 rounded-[2rem] rounded-b-none sm:rounded-[3rem]  sm:rounded-l-none sm:rounded-br-none shadow-sm border">
-              <h3 className="text-2xl font-serif text-gray-800 mb-2">Our Vision</h3>
+            <FadeInFromBottom className="bg-white h-[33%] p-6 rounded-[2rem] rounded-b-none sm:rounded-[3rem]  sm:rounded-l-none sm:rounded-br-none shadow-sm border">
+
+              <h3 className="text-2xl  text-gray-800 mb-2">Our Vision</h3>
               <p className="text-gray-600">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
               </p>
-            </div>
+
+            </FadeInFromBottom>
 
             {/* Mission Card */}
-            <div className="bg-white h-[33%] p-6 rounded-[3rem] rounded-l-none rounded-r-none shadow-sm border">
-              <h3 className="text-2xl font-serif text-gray-800 mb-2">Our Mission</h3>
+            <FadeInFromBottom className="bg-white h-[33%] p-6 rounded-[3rem] rounded-l-none rounded-r-none shadow-sm border">
+
+              <h3 className="text-2xl  text-gray-800 mb-2">Our Mission</h3>
               <p className="text-gray-600">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
               </p>
-            </div>
+
+            </FadeInFromBottom>
 
             {/* Growth Card */}
-            <div className="bg-white h-[33%] p-6 rounded-[2rem] rounded-t-none sm:rounded-[3rem] sm:rounded-l-none sm:rounded-tr-none shadow-sm border">
-              <h3 className="text-2xl font-serif text-gray-800 mb-2">Our Commitment to Growth</h3>
+            <FadeInFromBottom className="bg-white h-[33%] p-6 rounded-[2rem] rounded-t-none sm:rounded-[3rem] sm:rounded-l-none sm:rounded-tr-none shadow-sm border">
+
+              <h3 className="text-2xl  text-gray-800 mb-2">Our Commitment to Growth</h3>
               <p className="text-gray-600">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
               </p>
-            </div>
+
+            </FadeInFromBottom>
 
           </div>
         </div>

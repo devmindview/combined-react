@@ -1,11 +1,12 @@
 import React from 'react';
- import { Facebook, Instagram, Twitter, YouTube } from '@mui/icons-material';
+import { Facebook, Instagram, Twitter, YouTube } from '@mui/icons-material';
 // import WhatsAppChat from '../common/WhatsAppChat';
-import bgImage from '../../assets/footer.jpg'; 
+import bgImage from '../../assets/footer.jpg';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <footer className="relative bg-green-950 text-black pt-12 pb-8 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <footer className="relative bg-[#052e16] text-black pt-12 pb-8 px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center opacity-20 z-0"
@@ -30,23 +31,24 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-normal mb-4 text-white">Quick Links</h3>
             <ul className="space-y-2 text-white font-light">
-              <li  className="hover:text-black">Home</li>
-              <li  className="hover:text-black">About</li>
-              <li  className="hover:text-black">Services</li>
-              <li  className="hover:text-black">Contact</li>
-              <li  className="hover:text-black">Cancellation</li>
+              <li><Link to="/" className="hover:text-gray-400">Home</Link></li>
+              <li><Link to="/about" className="hover:text-gray-400">About</Link></li>
+              <li><Link to="/products" className="hover:text-gray-400">Products</Link></li>
+              <li><Link to="/contact" className="hover:text-gray-400">Contact</Link></li>
+              <li><Link to="/" className="hover:text-gray-400">For dealers</Link></li>
             </ul>
           </div>
+
 
           {/* Services */}
           <div>
             <h3 className="text-lg font-normal mb-4 text-white">Our Experiences</h3>
             <ul className="space-y-2 text-white font-light">
-              <li  className="hover:text-black">Product</li>
-              <li  className="hover:text-black">Categories</li>
-              <li  className="hover:text-black">Privacy Policy</li>
-              <li  className="hover:text-black">Terms & Conditions</li>
-              <li  className="hover:text-black">Refund Policy</li>
+              <li><Link to="/" className="hover:text-gray-400">Home</Link></li>
+              <li><Link to="/about" className="hover:text-gray-400">About</Link></li>
+              <li><Link to="/about" className="hover:text-gray-400">About</Link></li>
+              <li><Link to="/products" className="hover:text-gray-400">Privacy Policy</Link></li>
+              <li><Link to="/contact" className="hover:text-gray-400">Terms & Conditions</Link></li>
             </ul>
           </div>
 
@@ -64,12 +66,12 @@ const Footer = () => {
           {/* Social */}
           <div>
             <h3 className="text-lg font-normal mb-4 text-white">Follow the Journey</h3>
-             <div className="flex space-x-4 text-white font-light">
+            <div className="flex space-x-4 text-white font-light">
               <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-black"><Facebook /></a>
               <a href="https://instagram.com/kayakify.kochi" target="_blank" rel="noopener noreferrer" className="hover:text-black"><Instagram /></a>
               <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-black"><Twitter /></a>
               <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="hover:text-black"><YouTube /></a>
-            </div> 
+            </div>
           </div>
         </div>
 

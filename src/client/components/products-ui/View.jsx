@@ -1,75 +1,253 @@
-import React, { useState } from "react";
-import aswagandha from "../../../assets/Aswagandha.jpg";
-import brahmi from "../../../assets/Brahmi.jpg";
-import kasajith from "../../../assets/Kasajith.jpg";
-import mahisha from "../../../assets/Mahisha.jpg";
-import sorecure from "../../../assets/Sorecure.jpg";
-import wormjith from "../../../assets/Wormjith.jpg";
+import { useState, useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import Zoom from 'react-medium-image-zoom';
+import 'react-medium-image-zoom/dist/styles.css';
+import Card from "./Card";
+import { getRelatedProducts } from "../../services/userServices";
+import Faq from "../Faq";
 
-import productData from "../../../data.js";
-import Card from "../home-ui/Card.jsx";
-import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
 function View() {
-  const sidebarImages = [aswagandha, brahmi, kasajith, mahisha, sorecure];
-  const [selectedImage, setSelectedImage] = useState(wormjith);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const { product } = location.state || {};
+  const [selectedImage, setSelectedImage] = useState("");
+  const [selectedVariant, setSelectedVariant] = useState(null);
+  const [quantity, setQuantity] = useState(1);
+  const [showFullDesc, setShowFullDesc] = useState(false);
+
+  const [relatedProducts, setRelatedProducts] = useState([]);
+
+  useEffect(() => {
+    if (product?.images?.length > 0) {
+      setSelectedImage(product.images[0].src);
+    }
+
+    if (product?.variants?.length > 0) {
+      setSelectedVariant(product.variants[0]); // Select the first variant by default
+    }
+  }, [product]);
+
+  const handleVariantSelect = (variant) => {
+    setSelectedVariant(variant);
+  };
+
+  // Related product
+  useEffect(() => {
+    if (product?.id) {
+      getRelatedProducts(product.id)
+        .then((data) => setRelatedProducts(data))
+        .catch((err) => console.error("Error loading related products", err));
+    }
+  }, [product]);
+
+
+  if (!product) {
+    return (
+      <div className="text-center p-10 text-gray-500">
+        Product not found.{" "}
+        <button
+          className="text-blue-600 underline"
+          onClick={() => navigate("/")}
+        >
+          Go back
+        </button>
+      </div>
+    );
+  }
 
   return (
     <>
-      <section className="max-w-7xl mx-auto h-fit py-5 flex flex-col md:flex-row bg-white">
-        {/* Sidebar */}
-        <div className="w-full md:w-2/12 p-4 flex md:flex-col flex-row gap-4 items-center justify-center">
-          {sidebarImages.map((img, index) => (
+      {/* Breadcrumbs */}
+      <div className="w-full bg-[#f6f2eb] text-gray-600 py-4 text-sm">
+        <div className="max-w-7xl mx-auto w-full px-4 flex items-center">
+          <p>
+            <Link to="/products" className="hover:underline text-green-700">All Products</Link> / {product.name}
+          </p>
+        </div>
+      </div>
+
+      <section className="max-w-7xl min-h-[80vh]  mx-auto pb-0 px-4 flex flex-col md:flex-row gap-6  rounded-xl">
+        {/* Thumbnails */}
+        {/* <div className="w-full md:w-1/12 flex md:flex-col gap-3 items-center justify-center">
+          {product.images?.map((img, idx) => (
             <img
-              key={index}
-              src={img}
-              alt={`product-${index}`}
-              onClick={() => setSelectedImage(img)}
-              className={`w-16 md:w-24 object-cover rounded-lg shadow cursor-pointer border-2 ${
-                selectedImage === img ? "border-green-600" : "border-transparent"
-              }`}
+              key={idx}
+              src={img.src}
+              alt={`thumb-${idx}`}
+              onClick={() => setSelectedImage(img.src)}
+              className={`w-16 md:w-20 h-16 md:h-20 object-cover rounded-lg cursor-pointer border-2 ${selectedImage === img.src
+                ? "border-green-600"
+                : "border-transparent"
+                }`}
             />
           ))}
-        </div>
+        </div> */}
 
         {/* Main Image */}
-        <div className="w-full md:w-5/12 p-4 flex items-center justify-center">
-          <div className="relative group w-full max-h-[500px] overflow-hidden rounded-xl shadow-lg">
-            <img
-              src={selectedImage}
-              alt="Main"
-              className="w-full h-full object-contain transform transition-transform duration-300 group-hover:scale-125"
-            />
+        <div className="w-full md:w-6/12 flex items-center justify-center">
+          <div className="w-full overflow-hidden rounded-xl ">
+            <Zoom>
+              <img
+                src={selectedImage || product.images?.[0]?.src}
+                alt={product.name}
+                className="w-full object-contain cursor-zoom-in"
+              />
+            </Zoom>
+            <div className="w-full flex flex-row gap-3 mt-2 items-center justify-center">
+              {product.images?.map((img, idx) => (
+                <img
+                  key={idx}
+                  src={img.src}
+                  alt={`thumb-${idx}`}
+                  onClick={() => setSelectedImage(img.src)}
+                  className={`w-16 md:w-20 h-16 md:h-20 object-cover rounded-lg cursor-pointer border-2 ${selectedImage === img.src
+                    ? "border-green-600"
+                    : "border-transparent"
+                    }`}
+                />
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* Product Info */}
-        <div className="w-full md:w-5/12 p-6 flex flex-col justify-start items-start text-start">
-          <h2 className="text-xl md:text-4xl font-semibold mb-3">Aswagandha</h2>
-          <p className="text-gray-700 text-sm mb-3">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse expedita, omnis illum veritatis id exercitationem. Reiciendis ab illo, modi voluptate tempore sed vel minima, odio iusto tenetur necessitatibus harum velit!
-          </p>
-          <h2 className="text-2xl font-semibold my-2 text-black">₹500</h2>
-          <p className="text-sm text-red-600">4 items left</p>
-          <h2 className="text-md font-normal my-4 text-gray-500">
-            Quantity <button className="px-4 py-2 border ml-2">100 ml</button>
-          </h2>
-          <button className=" bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700 transition">
-            Order via { " " } <WhatsAppIcon/>
+        {/* Info */}
+        <div className="w-full md:w-5/12 my-auto flex flex-col gap-4 text-left">
+          <h1 className="text-2xl md:text-5xl font-medium text-gray-800">
+            {product.name}
+          </h1>
+
+          {/* Price */}
+          <div className="text-green-800 text-2xl font-semibold">
+            ₹ {selectedVariant?.price || product.price}
+          </div>
+
+          {/* Description with View More */}
+          {product.description ? (
+            <div className="text-gray-700 text-sm leading-relaxed tracking-wide">
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: showFullDesc
+                    ? product.description
+                    : product.description.slice(0, 350) + (product.description.length > 350 ? "..." : ""),
+                }}
+              />
+              {product.description.length > 350 && (
+                <button
+                  onClick={() => setShowFullDesc((prev) => !prev)}
+                  className="text-red-950 mt-2 underline text-sm"
+                >
+                  {showFullDesc ? "View Less" : "View More"}
+                </button>
+              )}
+            </div>
+          ) : (
+            <p className="text-gray-400 text-sm">No description available.</p>
+          )}
+
+          {/* Variant Selection */}
+          {product.variants?.length > 0 && (
+            <div>
+              <h4 className="text-sm font-medium text-gray-600 mb-2">
+                Volume :
+              </h4>
+              <div className="flex flex-wrap gap-2">
+                {product.variants.map((variant) => {
+                  const label = `${variant.quantity} ${variant.unit}`;
+                  const isSelected = selectedVariant?.id === variant.id;
+                  return (
+                    <button
+                      key={variant.id}
+                      className={`px-4 py-1  text-sm border transition ${isSelected
+                        ? "bg-green-600 text-white border-green-600"
+                        : "border-gray-300 text-gray-700 hover:bg-gray-100"
+                        }`}
+                      onClick={() => handleVariantSelect(variant)}
+                    >
+                      {label}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          {/* Stock */}
+          {product.stock_quantity !== undefined && (
+            <p className="text-sm text-gray-600">
+              Available: {product.stock_quantity}
+            </p>
+          )}
+
+          <div className="text-sm">
+            <span
+              className={`inline-block px-3 py-1 rounded-full ${product.is_in_stock
+                ? "bg-green-100 text-green-700"
+                : "bg-red-100 text-red-700"
+                }`}
+            >
+              {product.is_in_stock ? "In Stock" : "Out of Stock"}
+            </span>
+          </div>
+
+          {/* Quantity Selector */}
+          <div className="mt-4">
+            <p className="text-sm text-gray-600 mb-1">Quantity</p>
+            <div className="flex items-center gap-4 border rounded px-4 py-1 w-fit">
+              <button
+                onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}
+                className="text-xl text-gray-500"
+              >
+                −
+              </button>
+              <span className="text-lg font-semibold">{quantity}</span>
+              <button
+                onClick={() => setQuantity((prev) => prev + 1)}
+                className="text-xl text-gray-500"
+              >
+                +
+              </button>
+            </div>
+          </div>
+          {/* WhatsApp Order */}
+          <button
+            className="mt-4 bg-green-600 text-white px-6 py-3 rounded hover:bg-green-700 transition"
+            onClick={() =>
+              window.open(
+                `https://wa.me/?text=I want to order: ${product.name} (${quantity} × ${selectedVariant?.quantity} ${selectedVariant?.unit})`,
+                "_blank"
+              )
+            }
+          >
+            Order via WhatsApp <WhatsAppIcon className="ml-2" />
           </button>
+
         </div>
+
+
       </section>
 
-      {/* Related Section */}
-      <section className="w-full max-w-4xl md:max-w-7xl h-auto flex flex-col items-start justify-center mx-auto my-16 px-6">
-        <h3 className="text-xl text-start text-gray-500 font-normal mb-6">Related Products</h3>
-        <div className="w-full grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
-          {productData.slice(0, 4).map((item) => (
-            <Card key={item.id} {...item} />
-          ))}
+      {/* Related Products Section below */}
+      <section className="max-w-7xl mx-auto px-4 py-8">
+        <h2 className="text-xl md:text-3xl font-medium mb-4 text-gray-800">Related Products</h2>
+        <hr />
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-4">
+          {relatedProducts.length > 0 ? (
+            relatedProducts.map((item) => (
+              <Card key={item.id} product={item} />
+            ))
+          ) : (
+            <p className="col-span-full text-center text-gray-500">
+              No related products found.
+            </p>
+          )}
         </div>
       </section>
+      <Faq />
     </>
+
   );
 }
 

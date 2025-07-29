@@ -1,6 +1,7 @@
 import React from 'react';
 import hero from '../../assets/aesthetic-bg.webp';
 import Faq from '../components/Faq';
+import FadeInFromBottom from '../components/elements/FadeInFromBottom';
 
 function Contact() {
     return (
@@ -17,9 +18,11 @@ function Contact() {
                     backgroundAttachment: 'fixed',
                 }}
             >
-                <h1 className="text-3xl sm:text-7xl text-white text-center font-serif">
+                <FadeInFromBottom>
+                    <h1 className="text-2xl sm:text-3xl text-white text-center">
                     Contact Us
                 </h1>
+                </FadeInFromBottom>
             </section>
 
 
@@ -38,9 +41,11 @@ function Contact() {
                     {/* Form */}
                     <div className="md:w-1/2 w-full">
                         {/* <h6 className="mt-10 font-semibold">Connect with us</h6> */}
-                        <h3 className="text-3xl md:text-4xl font-serif leading-snug pt-2 mb-4">
-                            Tell Us What You’re Looking For
-                        </h3>
+                        <FadeInFromBottom>
+                            <h3 className="text-3xl md:text-4xl leading-snug pt-2 mb-4">
+                                Tell Us What You’re Looking For
+                            </h3>
+                        </FadeInFromBottom>
 
                         <form className="space-y-4">
                             <div>
@@ -106,7 +111,7 @@ function Contact() {
                 </div>
             </section>
             <section className="max-w-7xl mx-auto my-10 px-4">
-                <div className="w-full aspect-video rounded-xl overflow-hidden shadow-lg">
+                <div className="w-full h-[300px] md:h-[400px] rounded-xl overflow-hidden shadow-lg">
                     <iframe
                         title="Google Map Location"
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4916.733312066819!2d76.30611727589321!3d9.992585773160439!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080d2309e7870b%3A0x898993a479ca8935!2sCombined%20Pharmaceuticals%20Ayurvedic%20Medicines!5e1!3m2!1sen!2sin!4v1751272944695!5m2!1sen!2sin"
@@ -119,7 +124,7 @@ function Contact() {
                     ></iframe>
                 </div>
             </section>
-            <Faq/>
+            <Faq />
 
         </div>
     );

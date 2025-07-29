@@ -1,4 +1,3 @@
-import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Home from '../pages/Home';
 import About from '../pages/About';
@@ -10,6 +9,8 @@ import Contact from '../pages/Contact';
 
 
 function ClientRoute() {
+ 
+
   return (
     <Routes>
       <Route element={<ClientLayout />}>
@@ -17,7 +18,7 @@ function ClientRoute() {
         <Route path="/about" element={<About />} />
         <Route path="/products" element={<Products />} />
         <Route path="/view" element={<View />} />
-        <Route path="/contact" element={<Contact/>} />
+        <Route path="/contact" element={<Contact />} />
       </Route>
     </Routes>
   );

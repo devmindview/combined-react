@@ -1,48 +1,87 @@
-import React from 'react'
-import hero from '../../assets/aesthetic-bg.webp'
-import Card from "../components/home-ui/Card";
-import productData from "../../data.js";
-import SearchBar from '../components/products-ui/SearchBar.jsx';
+import React, { useEffect, useState } from "react";
+import { getAllProducts, getAllCategories } from "../services/userServices";
+import Card from "../components/products-ui/Card";
+import SearchBar from "../components/products-ui/SearchBar";
+import { useLocation } from "react-router-dom";
+
 
 function Products() {
-    return (
-        <div>
-            <section
-                className="h-[30vh] md:h-[35vh] container  max-w-[95%] rounded-tl-3xl rounded-b-3xl rounded-tr-[5rem] md:rounded-tr-[8rem]  mx-auto flex items-center justify-center "
-                style={{
-                    backgroundImage: `
-                          linear-gradient(rgba(8, 30, 15, 0.85), rgba(8, 30, 15, 0.85)),
-                          url(${hero}) `,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    backgroundAttachment: "fixed",
-                }}
-            >
-                <h1 className="text-3xl sm:text-7xl text-white text-center font-serif">Products</h1>
-            </section>
+  const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
 
-            <section className="w-full max-w-4xl md:max-w-7xl h-auto flex flex-col items-center justify-center mx-auto my-10 px-6">
+  function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
+const query = useQuery();
+const initialCategory = query.get("category") || "All";
+const [selectedCategory, setSelectedCategory] = useState(initialCategory);
 
-                <div className='w-full flex gap-1 md:gap-3 mb-5 md:mb-10'>
-                    <select class="w-5/12 bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option selected disabled>Select Catogary</option>
-                        <option >All</option>
-                        <option >Facepack</option>
-                        <option >Oil</option>
-                        <option >Soap</option>
-                        <option >Other</option>
-                    </select>
-                    <SearchBar />
+useEffect(() => {
+  (async () => {
+    try {
+      const [productsData, categoriesData] = await Promise.all([
+        getAllProducts(),
+        getAllCategories(),
+      ]);
+      setProducts(productsData);
+      setCategories(categoriesData);
+    } catch (err) {
+      console.error("Error fetching data:", err);
+    }
+  })();
+}, []);
+useEffect(() => {
+  const categoryFromQuery = query.get("category") || "All";
+  setSelectedCategory(categoryFromQuery);
+}, [useLocation()]);
 
-                </div>
-                <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-10">
-                    {productData.map((item) => (
-                        <Card key={item.id} {...item} />
-                    ))}
-                </div>
-            </section>
+
+  const filteredProducts =
+    selectedCategory === "All"
+      ? products
+      : products.filter(
+        (item) =>
+          item.category?.name?.toLowerCase() ===
+          selectedCategory.toLowerCase()
+      );
+
+  return (
+    <div className="w-full"> {/* 140px = approx header + footer */}
+      {/* Sticky Filter Bar */}
+      <div className="sticky top-0 max-w-7xl mx-auto bg-[#fdfbf7] z-20 px-6 py-4 ">
+        <div className="flex flex-col sm:flex-row gap-4">
+          <select
+            value={selectedCategory}
+            onChange={(e) => setSelectedCategory(e.target.value)}
+            className="sm:w-5/12 bg-[#fdfbf7] border text-gray-900 text-sm rounded-lg p-2.5"
+          >
+            <option value="All">All</option>
+            {categories.map((cat) => (
+              <option key={cat.id} value={cat.name}>
+                {cat.name}
+              </option>
+            ))}
+          </select>
+          <SearchBar />
         </div>
-    )
+      </div>
+
+      {/* Product Grid */}
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 max-w-7xl mx-auto px-4">
+        {filteredProducts.length > 0 ? (
+          filteredProducts.map((item) => (
+            <Card key={item.id} product={item} />
+          ))
+        ) : (
+          <p className="col-span-full text-center text-gray-500">
+            No products found.
+          </p>
+        )}
+      </div>
+
+
+    </div>
+  );
 }
 
-export default Products
+export default Products;

@@ -42,7 +42,7 @@ const Testmonial = () => {
   }, []);
 
   return (
-    <div className="relative h-[20rem] md:h-[16rem] overflow-hidden border my-12 rounded-tl-3xl rounded-b-3xl rounded-tr-[8rem] bg-red-50">
+    <div className="relative h-[20rem] md:h-[16rem] overflow-hidden border my-12 rounded-tl-3xl rounded-b-3xl rounded-tr-[8rem] bg-white">
       {testimonials.map((item, index) => (
         <div
           key={item.id}

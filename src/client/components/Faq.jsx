@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
+import FadeInFromBottom from "./elements/FadeInFromBottom";
 
 const faqData = [
   {
@@ -29,10 +30,12 @@ function Faq() {
   };
 
   return (
-    <section className="w-full max-w-5xl mx-auto px-4 py-16">
-      <h2 className="text-4xl font-serif text-center mb-12 text-green-800">
+    <section className="w-full max-w-5xl mx-auto px-4 py-12">
+      <FadeInFromBottom>
+        <h2 className="text-4xl text-center mb-12 text-green-800">
         Frequently Asked Questions
       </h2>
+      </FadeInFromBottom>
 
       <div className="space-y-4">
         {faqData.map((faq, index) => {
