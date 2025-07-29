@@ -200,7 +200,7 @@ const Home = () => {
         {/* Text Section */}
         <div className="md:w-1/2 w-full md:pl-10">
           <FadeInFromBottom>
-            <h1 className="text-green-950 text-2xl sm:text-3xl md:text-5xl font-medium leading-snug">
+            <h1 className="text-green-950 text-2xl sm:text-3xl md:text-4xl font-medium leading-snug">
               Sanctuary for Ayurvedic Healing and Wellness
             </h1>
             <p className="text-base md:text-lg my-4 text-slate-600">
@@ -336,7 +336,7 @@ const Home = () => {
           <div className="md:w-1/2 w-full md:pl-10 md:mb-0">
             <FadeInFromBottom>
               <h6 className=" mt-10 font-normal">Our Testmonials</h6>
-              <h2 className="text-green-950 text-2xl sm:text-3xl md:text-5xl font-normal leading-snug pt-2 mb-4">Simple and Effective, Healing Process</h2>
+              <h2 className="text-green-950 text-2xl sm:text-3xl md:text-4xl font-normal leading-snug pt-2 mb-4">Simple and Effective, Healing Process</h2>
             </FadeInFromBottom>
             <FadeInFromBottom>
               <p className="text-base md:text-lg my-4 text-slate-600">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis itaque ex praesentium quod veritatis dolorem tempore at molestias consequuntur ullam.</p>

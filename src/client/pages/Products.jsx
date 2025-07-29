@@ -46,7 +46,7 @@ useEffect(() => {
       );
 
   return (
-    <div className="w-full"> {/* 140px = approx header + footer */}
+    <div className="w-full pb-5"> {/* 140px = approx header + footer */}
       {/* Sticky Filter Bar */}
       <div className="sticky top-0 max-w-7xl mx-auto bg-[#fdfbf7] z-20 px-6 py-4 ">
         <div className="flex flex-col sm:flex-row gap-4">

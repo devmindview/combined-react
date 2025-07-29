@@ -25,16 +25,16 @@ const Card = ({ product }) => {
         />
 
         {/* Product Info Wrapper */}
-        <div className="flex flex-col flex-grow px-2 pb-3 justify-between">
+        <div className="flex flex-col flex-grow px-2 pb-2 justify-between">
           {/* Name */}
-          <h2 className="text-base md:text-lg font-medium line-clamp-2 mb-0 min-h-[1rem]">
+          <h2 className="text-base md:text-lg font-medium line-clamp-1.5 mb-0 min-h-[0.5rem]">
             {name}
           </h2>
 
           {/* Price and Stock */}
           <div className="flex items-center justify-between mb-0">
-            <span className="text-lg text-red-950 font-semibold">₹ {price}</span>
-            <span className={`text-sm ${is_in_stock ? "text-green-700" : "text-red-700"}`}>
+            <span className="text-lg text-red-950 font-medium">₹ {price}</span>
+            <span className={`text-xs ${is_in_stock ? "text-green-700" : "text-red-700"}`}>
               {is_in_stock ? "In Stock" : "Out of Stock"}
             </span>
           </div>
