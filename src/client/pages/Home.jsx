@@ -121,12 +121,12 @@ const Home = () => {
               </h6>
             </FadeInFromBottom>
             <FadeInFromBottom>
-              <h1 className="text-2xl sm:text-3xl md:text-5xl font-semibold leading-snug mb-4">
+              <h1 className="text-2xl/7 sm:text-3xl md:text-4xl  font-semibold  mb-4">
                 Discover the Power of Ayurveda with Our Trusted Experts
               </h1>
             </FadeInFromBottom>
             <FadeInFromBottom>
-              <p className="text-sm sm:text-base md:text-lg mb-6 max-w-[90%] sm:max-w-[80%]">
+              <p className="text-sm sm:text-base md:text-lg/6 mb-6 max-w-[90%] sm:max-w-[80%]">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper.
               </p>
             </FadeInFromBottom>
@@ -138,7 +138,7 @@ const Home = () => {
                   Make Appointment
                 </button>
                 <a href="#hero-about">
-                  <button className="px-6 py-3 bg-white text-teal-700 rounded-xl hover:bg-slate-200 transition w-full sm:w-auto">
+                  <button className="px-6 py-3 text-xs bg-white text-teal-700 rounded-xl hover:bg-slate-200 transition w-full sm:w-auto">
                     Learn More
                   </button>
                 </a>
@@ -146,7 +146,7 @@ const Home = () => {
             </FadeInFromBottom>
 
             {/* Autoplay */}
-            <FadeInFromBottom className="w-full mt-6">
+            <FadeInFromBottom className="w-full mt-2">
 
               <AutoPlay />
 

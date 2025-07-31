@@ -16,12 +16,12 @@ const icons = [
   { icon: icon3, title: "Wellness Experts" },
   { icon: icon4, title: "Organic Oils" },
   { icon: icon5, title: "Mindful Living" },
-  { icon: icon6, title: "Herbal Therapy" },
+  { icon: icon6, title: "Herbal Medicine" },
 ];
 
 const AutoPlay = () => {
   return (
-    <div className="w-full mt-6 p-4 rounded-xl">
+    <div className="w-full mt-3 p-4 rounded-xl">
       <Swiper
         modules={[Autoplay, Pagination]}
         spaceBetween={20}
@@ -40,7 +40,7 @@ const AutoPlay = () => {
       >
         {icons.map((item, index) => (
           <SwiperSlide key={index}>
-            <div className="backdrop-blur-md bg-black/20 h-40 flex flex-col items-center justify-center m-2 rounded-xl shadow-lg px-4">
+            <div className="backdrop-blur-md bg-black/20 h-fit  flex flex-col items-center justify-center m-2 rounded-xl shadow-lg py-4 px-4">
               <img src={item.icon} alt={item.title} className="opacity-70 w-16 h-auto mb-2" />
               <h4 className="text-white text-sm font-medium text-center">{item.title}</h4>
             </div>
