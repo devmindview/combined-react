@@ -120,7 +120,7 @@ function View() {
           </h1>
 
           {/* Price */}
-          <div className="text-green-800 text-2xl font-semibold">
+          <div className="text-green-800 text-2xl font-medium font-sans">
             ₹ {selectedVariant?.price || product.price}
           </div>
 
@@ -236,13 +236,16 @@ function View() {
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-4">
           {relatedProducts.length > 0 ? (
             relatedProducts.map((item) => (
-              <Card key={item.id} product={item} />
+              <div key={item.id} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+                <Card product={item} />
+              </div>
             ))
           ) : (
             <p className="col-span-full text-center text-gray-500">
               No related products found.
             </p>
           )}
+
         </div>
       </section>
       <Faq />

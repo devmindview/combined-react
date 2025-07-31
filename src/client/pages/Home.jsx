@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-import hero from "../../assets/aesthetic-bg.webp";
+// import hero from "../../assets/aesthetic-bg.webp";
+import vid from '../../assets/hero.mp4'
 import heropic from "../../assets/heropic.jpg";
-import whitepot2 from "../../assets/about2.jpg";
+import whitepot2 from "../../assets/about2.webp";
 import whitepot1 from "../../assets/about1.jpg";
 import whitepot from "../../assets/whitepot.png";
 import AutoPlay from "../components/elements/AutoPlay";
@@ -101,7 +102,7 @@ const Home = () => {
         {/* Video Background */}
         <video
           className="absolute inset-0 w-full h-full object-cover z-0"
-          src="https://videos.pexels.com/video-files/5480231/5480231-uhd_2560_1440_25fps.mp4"
+          src={vid}
           autoPlay
           muted
           loop
@@ -133,7 +134,7 @@ const Home = () => {
             {/* Two Buttons */}
             <FadeInFromBottom>
               <div className="flex flex-row sm:flex-row gap-4 w-full sm:w-auto justify-center sm:justify-start">
-                <button className="px-6 py-3 bg-[#bbb434] text-white rounded-xl hover:bg-teal-600 transition w-full sm:w-auto">
+                <button className="px-6 py-0 text-xs bg-[#bbb434] text-white rounded-xl hover:bg-green-800 transition w-full sm:w-auto">
                   Make Appointment
                 </button>
                 <a href="#hero-about">
@@ -168,7 +169,7 @@ const Home = () => {
                 className="w-full h-56 sm:h-80 object-cover transition-transform duration-500 group-hover:scale-110"
               />
               <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-60 py-3 text-white text-center text-base font-medium">
-                Ayurveda Healing
+                Ayurveda Ingredients
               </div>
             </div>
 
@@ -179,7 +180,7 @@ const Home = () => {
                 className="w-full h-56 sm:h-80 object-cover transition-transform duration-500 group-hover:scale-110"
               />
               <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-60 py-3 text-white text-center text-base font-medium">
-                Natural Treatments
+                Extraction & Study
               </div>
             </div>
           </div>
@@ -192,7 +193,7 @@ const Home = () => {
               className="w-full h-full min-h-[384px] object-cover transition-transform duration-500 group-hover:scale-110"
             />
             <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-60 py-3 text-white text-center text-base font-medium">
-              Peaceful Retreat
+              Herbal Grinding
             </div>
           </div>
         </div>

@@ -3,9 +3,9 @@ import CountUp from 'react-countup';
 import { useInView } from 'react-intersection-observer';
 
 const stats = [
-  { label: 'Positive Reviews', value: 300 },
-  { label: 'Happy Customers', value: 850 },
-  { label: 'Locations', value: 6 },
+  { label: 'Positive Reviews', value: 3000 },
+  { label: 'Happy Customers', value: 5000 },
+  { label: 'Locations', value: 4 },
 ];
 
 function Counter() {

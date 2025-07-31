@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
-import logo from '../../assets/logo.png'
+import logo from '../../assets/logo1.png'
 import { getAllCategories } from "../services/userServices";
 import { useRef } from "react";
 
@@ -37,7 +37,7 @@ const Header = () => {
           <img
             src={logo} // Replace with your logo
             alt="combined"
-            className="w-16 md:w-20 mr-2"
+            className="w-24 md:w-36 mr-2"
           />
 
         </Link>
@@ -72,6 +72,7 @@ const Header = () => {
               </div>
             )}
           </div>
+          <Link to="/dealer" className="hover:text-green-700">For Dealers</Link>
 
         </nav>
 
@@ -79,7 +80,7 @@ const Header = () => {
         {/* Contact Button (desktop only) */}
         <div className="hidden lg:block">
 
-          <Link to={'/contact'} className="bg-[#1d4607] text-white px-6 py-3 rounded-full font-semibold text-sm hover:bg-green-700 transition">
+          <Link to={'/contact'} className="bg-[#2c670b] text-white px-6 py-3 rounded-full font-semibold text-sm hover:bg-green-700 transition">
             Contact Us
           </Link>
         </div>
@@ -127,13 +128,15 @@ const Header = () => {
             <hr />
             <Link to="/products" className="block hover:text-green-700">Products</Link>
             <hr />
+            <Link to="/dealer" className="block hover:text-green-700">Dealer</Link>
+            <hr />
             <Link to="#" className="block hover:text-green-700">Categories</Link>
             {categories.map(cat => (
               <Link
                 key={cat.id}
                 to={`/products?category=${encodeURIComponent(cat.name)}`}
                 className="block text-xs text-gray-600 hover:text-green-700"
-                onClick={() => setMenuOpen(false)} 
+                onClick={() => setMenuOpen(false)}
               >
                 {cat.name}
               </Link>

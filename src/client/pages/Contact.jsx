@@ -20,8 +20,8 @@ function Contact() {
             >
                 <FadeInFromBottom>
                     <h1 className="text-2xl sm:text-3xl text-white text-center">
-                    Contact Us
-                </h1>
+                        Contact Us
+                    </h1>
                 </FadeInFromBottom>
             </section>
 
@@ -42,7 +42,7 @@ function Contact() {
                     <div className="md:w-1/2 w-full">
                         {/* <h6 className="mt-10 font-semibold">Connect with us</h6> */}
                         <FadeInFromBottom>
-                            <h3 className="text-3xl md:text-4xl leading-snug pt-2 mb-4">
+                            <h3 className="text-2xl md:text-3xl leading-snug pt-2 mb-4">
                                 Tell Us What You’re Looking For
                             </h3>
                         </FadeInFromBottom>
@@ -102,7 +102,7 @@ function Contact() {
 
                             <button
                                 type="submit"
-                                className="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700 transition"
+                                className="bg-green-700 text-white px-6 py-2 rounded hover:bg-green-800 transition"
                             >
                                 Send Message
                             </button>
@@ -114,7 +114,7 @@ function Contact() {
                 <div className="w-full h-[300px] md:h-[400px] rounded-xl overflow-hidden shadow-lg">
                     <iframe
                         title="Google Map Location"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4916.733312066819!2d76.30611727589321!3d9.992585773160439!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080d2309e7870b%3A0x898993a479ca8935!2sCombined%20Pharmaceuticals%20Ayurvedic%20Medicines!5e1!3m2!1sen!2sin!4v1751272944695!5m2!1sen!2sin"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4916.733312066819!2d76.30611727589321!3d9.992585773160439!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080d2309e7870b%3A0x898993a479ca8935!2sCombined%20Pharmaceuticals%20Ayurvedic%20Medicines!5e1!3m2!1sen!2sin!4v1751272944695!5m2!1sen!2sin&layer=sat"
                         width="100%"
                         height="100%"
                         style={{ border: 0 }}

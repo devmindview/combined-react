@@ -8,6 +8,9 @@ import { useLocation } from "react-router-dom";
 function Products() {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
+const [searchInput, setSearchInput] = useState("");
+const [searchTerm, setSearchTerm] = useState("");
+
 
   function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -30,23 +33,38 @@ useEffect(() => {
     }
   })();
 }, []);
+
 useEffect(() => {
   const categoryFromQuery = query.get("category") || "All";
   setSelectedCategory(categoryFromQuery);
 }, [useLocation()]);
 
+useEffect(() => {
+  const delayDebounce = setTimeout(() => {
+    setSearchTerm(searchInput);
+  }, 700); // 700ms delay
 
-  const filteredProducts =
+  return () => clearTimeout(delayDebounce); // cleanup
+}, [searchInput]);
+
+useEffect(() => {
+  setSearchInput("");
+}, [selectedCategory]);
+
+
+const filteredProducts = products
+  .filter((item) =>
     selectedCategory === "All"
-      ? products
-      : products.filter(
-        (item) =>
-          item.category?.name?.toLowerCase() ===
-          selectedCategory.toLowerCase()
-      );
+      ? true
+      : item.category?.name?.toLowerCase() === selectedCategory.toLowerCase()
+  )
+  .filter((item) =>
+    item.name?.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
 
   return (
-    <div className="w-full pb-5"> {/* 140px = approx header + footer */}
+    <div className="w-full pb-16"> {/* 140px = approx header + footer */}
       {/* Sticky Filter Bar */}
       <div className="sticky top-0 max-w-7xl mx-auto bg-[#fdfbf7] z-20 px-6 py-4 ">
         <div className="flex flex-col sm:flex-row gap-4">
@@ -62,7 +80,10 @@ useEffect(() => {
               </option>
             ))}
           </select>
-          <SearchBar />
+          <SearchBar 
+            value={searchInput}
+  onChange={(e) => setSearchInput(e.target.value)}
+          />
         </div>
       </div>
 

@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
 
 * {
   margin: 0;
@@ -12,6 +15,7 @@ body {
   background-color: #fdfbf7;
     /* background-color: #fafafa; */
   font-family: "Poppins", sans-serif;
+    font-style: normal;
 }
 h1,
 h2 {
