@@ -127,18 +127,18 @@ const Home = () => {
             </FadeInFromBottom>
             <FadeInFromBottom>
               <p className="text-sm sm:text-base md:text-lg/6 mb-6 max-w-[90%] sm:max-w-[80%]">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper.
+                Rediscover wellness through Ayurvedic practices crafted for your body and mind. Let our expert team guide your healing journey with care and precision.
               </p>
             </FadeInFromBottom>
 
             {/* Two Buttons */}
             <FadeInFromBottom>
               <div className="flex flex-row sm:flex-row gap-4 w-full sm:w-auto justify-center sm:justify-start">
-                <button className="px-6 py-0 text-xs bg-[#bbb434] text-white rounded-xl hover:bg-green-800 transition w-full sm:w-auto">
-                  Make Appointment
+                <button className="px-6 py-0 text-sm bg-[#bbb434] text-white rounded-xl hover:bg-green-800 transition w-full sm:w-auto">
+                  Make Order
                 </button>
                 <a href="#hero-about">
-                  <button className="px-6 py-3 text-xs bg-white text-teal-700 rounded-xl hover:bg-slate-200 transition w-full sm:w-auto">
+                  <button className="px-6 py-3 text-sm bg-white text-teal-700 rounded-xl hover:bg-slate-200 transition w-full sm:w-auto">
                     Learn More
                   </button>
                 </a>
