@@ -2,6 +2,7 @@ import React from "react";
 import hero from "../../assets/aesthetic-bg.webp";
 import heropic from "../../assets/heropic.jpg";
 import FadeInFromBottom from "../components/elements/FadeInFromBottom";
+import { Link } from "react-router-dom";
 
 
 const About = () => {
@@ -36,15 +37,17 @@ const About = () => {
                 Embrace Our Core Values <br /> for Holistic Wellness
               </h2>
               <p className="mt-4 text-gray-600 max-w-2xl">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+                At Combined, our commitment goes beyond medicine - Ensuring lasting impact for communities and individuals alike.
               </p>
             </FadeInFromBottom>
           </div>
           <div className="md:w-1/4 flex md:justify-end">
             <FadeInFromBottom>
+              <Link to={'/contact'}>
               <button className="text-white font-semibold bg-teal-600 hover:bg-teal-500 px-6 py-3 rounded-md transition">
               Contact us
             </button>
+              </Link>
             </FadeInFromBottom>
           </div>
         </div>
@@ -68,7 +71,7 @@ const About = () => {
 
               <h3 className="text-2xl  text-gray-800 mb-2">Our Vision</h3>
               <p className="text-gray-600">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+                To lead the Ayurvedic pharmaceutical industry with innovation, authenticity, and ethical practices - delivering health challenges.
               </p>
 
             </FadeInFromBottom>
@@ -78,7 +81,7 @@ const About = () => {
 
               <h3 className="text-2xl  text-gray-800 mb-2">Our Mission</h3>
               <p className="text-gray-600">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+                To produce scientifically formulated Ayurvedic methods that honor tradition and ensure wellness for all.
               </p>
 
             </FadeInFromBottom>
@@ -88,7 +91,7 @@ const About = () => {
 
               <h3 className="text-2xl  text-gray-800 mb-2">Our Commitment to Growth</h3>
               <p className="text-gray-600">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+                We invest in research, sustainability, and people - constantly evolving to meet the needs of our customers and contribute to a healthier world.
               </p>
 
             </FadeInFromBottom>

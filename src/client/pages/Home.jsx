@@ -205,8 +205,7 @@ const Home = () => {
               Sanctuary for Ayurvedic Healing and Wellness
             </h1>
             <p className="text-base md:text-lg my-4 text-slate-600">
-              At Wivana, we embrace authentic Ayurveda to nurture holistic
-              wellness, empowering you to find balance and rejuvenation in life.
+              At Combined, we craft authentic Ayurvedic medicines to support holistic health, empowering you to restore balance and vitality in everyday life.
             </p>
 
           </FadeInFromBottom>
@@ -221,11 +220,10 @@ const Home = () => {
             <div>
               <FadeInFromBottom>
                 <h2 className="text-xl md:text-xl my-1">
-                  Ayurvedic Expertise
+                  Ayurvedic Formulation Expertise
                 </h2>
                 <p className="text-slate-600">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-                  tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+                  Our formulations are developed by experienced Ayurvedic practitioners, blending time-tested ingredients with precision and care to deliver effective, natural remedies
                 </p>
               </FadeInFromBottom>
 
@@ -243,11 +241,12 @@ const Home = () => {
             <div>
               <FadeInFromBottom>
                 <h2 className="text-xl md:text-xl my-1 ">
-                  Tranquil Atmosphere
+                  Trusted Manufacturing Standards
                 </h2>
                 <p className="text-slate-600">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-                  tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+                  We uphold the highest standards in pharmaceutical manufacturing - ensuring purity, consistency, and safety in every batch of our Ayurvedic products.
+
+
                 </p>
               </FadeInFromBottom>
 
@@ -340,7 +339,7 @@ const Home = () => {
               <h2 className="text-green-950 text-2xl sm:text-3xl md:text-4xl font-normal leading-snug pt-2 mb-4">Simple and Effective, Healing Process</h2>
             </FadeInFromBottom>
             <FadeInFromBottom>
-              <p className="text-base md:text-lg my-4 text-slate-600">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis itaque ex praesentium quod veritatis dolorem tempore at molestias consequuntur ullam.</p>
+              <p className="text-base md:text-lg my-4 text-slate-600">At Combined, we follow a time-honored Ayurvedic preparation process - crafted with precision, purity, and purpose. From sourcing premium herbs to scientific formulation, every step reflects our commitment to natural healing.</p>
             </FadeInFromBottom>
             <FadeInFromBottom>
               <Testmonial />
