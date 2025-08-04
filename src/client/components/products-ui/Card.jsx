@@ -16,7 +16,7 @@ const Card = ({ product }) => {
 
   return (
     <Link to="/view" state={{ product }}>
-      <div className="w-full bg-[#fdfbf7] rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col p-0 h-full">
+      <div className="w-full bg-[#fdfbf7] rounded-xl shadow-sm hover:shadow-lg transition-shadow duration-300 flex flex-col p-0 h-full">
         <img
           src={images?.[0]?.src || "/placeholder.jpg"}
           alt={name}
