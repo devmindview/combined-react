@@ -8,59 +8,62 @@ import { useLocation } from "react-router-dom";
 function Products() {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
-const [searchInput, setSearchInput] = useState("");
-const [searchTerm, setSearchTerm] = useState("");
+  const [searchInput, setSearchInput] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [loading, setLoading] = useState(true); 
 
 
   function useQuery() {
-  return new URLSearchParams(useLocation().search);
-}
-const query = useQuery();
-const initialCategory = query.get("category") || "All";
-const [selectedCategory, setSelectedCategory] = useState(initialCategory);
+    return new URLSearchParams(useLocation().search);
+  }
+  const query = useQuery();
+  const initialCategory = query.get("category") || "All";
+  const [selectedCategory, setSelectedCategory] = useState(initialCategory);
 
-useEffect(() => {
-  (async () => {
-    try {
-      const [productsData, categoriesData] = await Promise.all([
-        getAllProducts(),
-        getAllCategories(),
-      ]);
-      setProducts(productsData);
-      setCategories(categoriesData);
-    } catch (err) {
-      console.error("Error fetching data:", err);
-    }
-  })();
-}, []);
+  useEffect(() => {
+    (async () => {
+      try {
+        const [productsData, categoriesData] = await Promise.all([
+          getAllProducts(),
+          getAllCategories(),
+        ]);
+        setProducts(productsData);
+        setCategories(categoriesData);
+      } catch (err) {
+        console.error("Error fetching data:", err);
+      }finally {
+        setLoading(false); 
+      }
+    })();
+  }, []);
 
-useEffect(() => {
-  const categoryFromQuery = query.get("category") || "All";
-  setSelectedCategory(categoryFromQuery);
-}, [useLocation()]);
+  useEffect(() => {
+    const categoryFromQuery = query.get("category") || "All";
+    setSelectedCategory(categoryFromQuery);
+  }, [useLocation()]);
 
-useEffect(() => {
-  const delayDebounce = setTimeout(() => {
-    setSearchTerm(searchInput);
-  }, 700); // 700ms delay
+  useEffect(() => {
+    const delayDebounce = setTimeout(() => {
+      setSearchTerm(searchInput);
+    }, 700); // 700ms delay
 
-  return () => clearTimeout(delayDebounce); // cleanup
-}, [searchInput]);
+    return () => clearTimeout(delayDebounce); // cleanup
+  }, [searchInput]);
 
-useEffect(() => {
-  setSearchInput("");
-}, [selectedCategory]);
+  useEffect(() => {
+    setSearchInput("");
+  }, [selectedCategory]);
 
 
-const filteredProducts = products
-  .filter((item) =>
-    selectedCategory === "All"
-      ? true
-      : item.category?.name?.toLowerCase() === selectedCategory.toLowerCase()
-  )
-  .filter((item) =>
-    item.name?.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredProducts = products
+    .filter((item) =>
+      selectedCategory === "All"
+        ? true
+        : item.category?.name?.toLowerCase() === selectedCategory.toLowerCase()
+    )
+    .filter((item) =>
+      item.name?.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
 
   return (
@@ -80,25 +83,32 @@ const filteredProducts = products
               </option>
             ))}
           </select>
-          <SearchBar 
+          <SearchBar
             value={searchInput}
-  onChange={(e) => setSearchInput(e.target.value)}
+            onChange={(e) => setSearchInput(e.target.value)}
           />
         </div>
       </div>
 
-      {/* Product Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 max-w-7xl mx-auto px-4 py-4">
-        {filteredProducts.length > 0 ? (
-          filteredProducts.map((item) => (
-            <Card key={item.id} product={item} />
-          ))
-        ) : (
-          <p className="col-span-full text-center text-gray-500">
-            No products found.
-          </p>
-        )}
-      </div>
+         {/* Loader or Products */}
+      {loading ? (
+        <div className="flex justify-center items-center h-64">
+          <div className="w-12 h-12 border-4 border-gray-300 border-t-green-500 rounded-full animate-spin"></div>
+        </div>
+      ) : (
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 max-w-7xl mx-auto px-4 py-4">
+          {filteredProducts.length > 0 ? (
+            filteredProducts.map((item) => (
+              <Card key={item.id} product={item} />
+            ))
+          ) : (
+            <p className="col-span-full text-center text-gray-500">
+              No products found.
+            </p>
+          )}
+        </div>
+      )}
+
 
 
     </div>
