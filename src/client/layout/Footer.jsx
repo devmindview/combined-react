@@ -56,10 +56,11 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-normal mb-4 text-white">Reach Out</h3>
             <ul className="space-y-2 text-white font-light">
-              <li>+91 99999 00000</li>
-              <li>combinedpharma@gmail.com</li>
-              <li>Chalakkudi, sample</li>
-              <li>Thrissur, Kerala 682000</li>
+              <li>+91 9074 279 105</li>
+              <li>+91 7012 766 743</li>
+              <li>combinedpharma123@gmail.com</li>
+              <li>Combined Pharmaceuticals,</li>
+              <li>Muringoor-680 309, Thrissur, Kerala</li>
             </ul>
           </div>
 
