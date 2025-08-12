@@ -122,15 +122,15 @@ const Header = () => {
 
           {/* Menu Links */}
           <nav className="space-y-5 text-green-950 font-medium text-sm">
-            <Link to="/" className="block hover:text-green-700">Home</Link>
+            <Link to="/" className="block hover:text-green-700" onClick={() => setMenuOpen(false)}>Home</Link>
             <hr />
-            <Link to="/about" className="block hover:text-green-700">About</Link>
+            <Link to="/about" className="block hover:text-green-700" onClick={() => setMenuOpen(false)} >About</Link>
             <hr />
-            <Link to="/products" className="block hover:text-green-700">Products</Link>
+            <Link to="/products" className="block hover:text-green-700" onClick={() => setMenuOpen(false)}>Products</Link>
             <hr />
-            <Link to="/dealer" className="block hover:text-green-700">Dealer</Link>
+            <Link to="/dealer" className="block hover:text-green-700" onClick={() => setMenuOpen(false)} >Dealer</Link>
             <hr />
-            <Link to="#" className="block hover:text-green-700">Categories</Link>
+            <Link to="#" className="block hover:text-green-700" >Categories</Link>
             {categories.map(cat => (
               <Link
                 key={cat.id}
