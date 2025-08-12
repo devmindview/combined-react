@@ -6,7 +6,7 @@ const PrivacyPolicy = () => {
       <h1 className="text-3xl font-bold mb-6">Privacy Policy</h1>
 
       <p className="mb-4">
-        At [Your Company Name], we are committed to protecting your privacy. This Privacy Policy explains how we collect, use, and protect your personal information.
+        At Combined Pharmaceuticals, we are committed to protecting your privacy. This Privacy Policy explains how we collect, use, and protect your personal information.
       </p>
 
       <h2 className="text-xl font-semibold mt-6 mb-2">1. Information We Collect</h2>
@@ -36,7 +36,7 @@ const PrivacyPolicy = () => {
 
       <h2 className="text-xl font-semibold mt-6 mb-2">6. Your Rights</h2>
       <p className="mb-4">
-        You have the right to access, update, or delete your personal information. Contact us at [your contact email] for any privacy-related requests.
+        You have the right to access, update, or delete your personal information. Contact us at combinedpharma123@gmail.com for any privacy-related requests.
       </p>
 
       <h2 className="text-xl font-semibold mt-6 mb-2">7. Changes to This Policy</h2>
@@ -45,7 +45,7 @@ const PrivacyPolicy = () => {
       </p>
 
       <p className="mt-8 text-sm text-gray-500">
-        Last updated: [Insert Date]
+        Last updated: Aug 12 2025
       </p>
     </div>
   );

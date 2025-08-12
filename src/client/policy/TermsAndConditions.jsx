@@ -45,7 +45,7 @@ const TermsAndConditions = () => {
       </p>
 
       <p className="mt-8 text-sm text-gray-500">
-        Last updated: [Insert Date]
+        Last updated: Aug 12 2025
       </p>
     </div>
   );
