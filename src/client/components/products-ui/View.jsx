@@ -6,7 +6,11 @@ import 'react-medium-image-zoom/dist/styles.css';
 import Card from "./Card";
 import { getRelatedProducts } from "../../services/userServices";
 import Faq from "../Faq";
+import DOMPurify from "dompurify";
 
+function stripHtml(html) {
+  return html.replace(/<[^>]*>?/gm, ""); // remove all HTML tags
+}
 
 function View() {
   const location = useLocation();
@@ -128,12 +132,15 @@ function View() {
           {product.description ? (
             <div className="text-gray-700 text-sm leading-relaxed tracking-wide">
               <div
+                className={`prose max-w-none ${!showFullDesc ? "max-h-40 overflow-hidden relative" : ""
+                  }`}
                 dangerouslySetInnerHTML={{
-                  __html: showFullDesc
-                    ? product.description
-                    : product.description.slice(0, 350) + (product.description.length > 350 ? "..." : ""),
+                  __html: DOMPurify.sanitize(product.description),
                 }}
               />
+              {!showFullDesc && (
+                <div className="absolute bottom-0 left-0 w-full h-10 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
+              )}
               {product.description.length > 350 && (
                 <button
                   onClick={() => setShowFullDesc((prev) => !prev)}
@@ -146,6 +153,7 @@ function View() {
           ) : (
             <p className="text-gray-400 text-sm">No description available.</p>
           )}
+
 
           {/* Variant Selection */}
           {product.variants?.length > 0 && (
