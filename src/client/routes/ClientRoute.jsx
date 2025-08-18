@@ -9,6 +9,7 @@ import PrivacyPolicy from '../policy/PrivacyPolicy';
 import TermsAndConditions from '../policy/TermsAndConditions';
 import DealerForm from '../pages/DealerForm';
 import MaintenancePage from '../pages/MaintenancePage';
+import NotFound from '../pages/NotFound';
 
 
 
@@ -27,6 +28,8 @@ function ClientRoute() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy/>} />
         <Route path="/terms-and-conditions" element={<TermsAndConditions/>} />
+                  {/* 404 fallback */}
+        <Route path="*" element={<NotFound/>} />    
       </Route>
     </Routes>
   );
