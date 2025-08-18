@@ -139,7 +139,7 @@ function View() {
                 }}
               />
               {!showFullDesc && (
-                <div className="absolute bottom-0 left-0 w-full h-10 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
+                <div className="absolute bottom-0 left-0 w-full h-10  pointer-events-none"></div>
               )}
               {product.description.length > 350 && (
                 <button
