@@ -8,7 +8,7 @@ import Contact from '../pages/Contact';
 import PrivacyPolicy from '../policy/PrivacyPolicy';
 import TermsAndConditions from '../policy/TermsAndConditions';
 import DealerForm from '../pages/DealerForm';
-import MaintenancePage from '../pages/MaintenancePage';
+// import MaintenancePage from '../pages/MaintenancePage';
 import NotFound from '../pages/NotFound';
 
 
@@ -18,9 +18,9 @@ function ClientRoute() {
 
   return (
     <Routes>
-        <Route path="/" element={<MaintenancePage/>} />
+        {/* <Route path="/" element={<MaintenancePage/>} /> */}
       <Route element={<ClientLayout />}>
-        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/products" element={<Products />} />
         <Route path="/view" element={<View />} />
