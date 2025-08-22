@@ -69,7 +69,7 @@ const Footer = () => {
             <h3 className="text-lg font-normal mb-4 text-white">Follow the Journey</h3>
             <div className="flex space-x-4 text-white font-light">
               <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-black"><Facebook /></a>
-              <a href="https://instagram.com/kayakify.kochi" target="_blank" rel="noopener noreferrer" className="hover:text-black"><Instagram /></a>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-black"><Instagram /></a>
               <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-black"><Twitter /></a>
               <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="hover:text-black"><YouTube /></a>
             </div>
